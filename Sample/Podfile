@@ -1,0 +1,48 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
+use_frameworks!
+
+# Our Libraries
+def libraries
+  pod 'Moya-ObjectMapper', :path => "../"
+end
+
+def libraries_rx_swift
+  pod 'Moya-ObjectMapper/RxSwift', :path => "../"
+  pod 'Moya/RxSwift'
+  pod 'RxSwift' #, :git => 'https://github.com/ReactiveX/RxSwift'
+  pod 'RxDataSources'
+  pod 'RxCocoa'
+  pod 'RxAlertController'
+end
+
+def libraries_reactive_swift
+  pod 'Moya-ObjectMapper/ReactiveSwift', :path => "../"
+  pod 'Moya/ReactiveSwift'
+  pod 'ReactiveSwift', :git => 'https://github.com/ReactiveCocoa/ReactiveSwift'
+end
+
+def required_pods
+  pod 'ObjectMapper' #, :git => 'https://github.com/Hearst-DD/ObjectMapper'
+  pod 'Moya' #, :git => 'https://github.com/Moya/Moya'
+end
+
+# Test Libraries
+def test_pods
+  pod 'Quick'
+  pod 'Nimble'
+  pod 'OHHTTPStubs'
+end
+
+target 'Demo' do
+  platform :ios, '9.0'
+  required_pods
+  libraries
+end
+
+target 'Demo-RxSwift' do
+  platform :ios, '9.0'
+  required_pods
+  libraries
+  libraries_rx_swift
+end
